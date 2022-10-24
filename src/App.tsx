@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import { Button } from 'antd';
+import { Layout } from 'antd';
+import Header from 'components/Header';
 
 function App() {
   return (
-    <div>
-      <Button type="primary">Button</Button>
-    </div>
+    <Layout>
+      <Header />
+    </Layout>
   );
 }
 
