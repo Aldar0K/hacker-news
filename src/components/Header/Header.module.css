@@ -1,8 +1,9 @@
-.container {
-  display: flex;
+.header {
+  background-color:  #001529;
+}
 
-  padding: 15px 50px;
-  height: auto;
+.container {
+  padding: 17px 50px;
 }
 
 .container .title {

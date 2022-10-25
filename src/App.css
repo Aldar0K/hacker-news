@@ -1,1 +1,20 @@
 @import '~antd/dist/antd.css';
+
+#root {
+  display: flex;
+  min-height: 100%;
+
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.container {
+  margin: 0 auto;
+
+  max-width: 1240px;
+}
