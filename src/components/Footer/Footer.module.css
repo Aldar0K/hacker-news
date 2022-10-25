@@ -1,0 +1,21 @@
+.footer {
+  background-color: #ca9880;
+}
+
+.container { 
+  display: flex;
+  
+  padding: 10px 50px;
+
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 1.6rem;
+}
+
+.data {
+  display: flex;
+
+  align-items: center;
+  gap: .5rem;
+}
