@@ -1,3 +1,4 @@
+import { fetchStoryById } from 'API';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -10,3 +11,11 @@ root.render(
     <App />
   </Router>
 );
+
+fetchStoryById(8863)
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err: Error) => {
+    console.log(err.message);
+  });
