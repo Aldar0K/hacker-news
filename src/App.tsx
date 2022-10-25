@@ -14,7 +14,7 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={MainPage} />
-        <Route path="/story" component={StoryPage} />
+        <Route path="/stories/:id" component={StoryPage} />
         <Route path="*" component={NotFoundPage} />
       </Switch>
       <Footer />
