@@ -8,3 +8,8 @@ export const extractFields = (story: IStory) => ({
   url: story.url,
   date: story.time,
 });
+
+export const getDateFromUnixTimestamp = (value: number) => {
+  const date = new Date(value * 1000);
+  return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+};

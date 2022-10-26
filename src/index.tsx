@@ -11,11 +11,3 @@ root.render(
     <App />
   </Router>
 );
-
-// fetchStoryById(8863)
-//   .then((data) => {
-//     console.log(data);
-//   })
-//   .catch((err: Error) => {
-//     console.log(err.message);
-//   });

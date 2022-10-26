@@ -16,7 +16,6 @@ export const fetchNewStories = async (): Promise<Array<number>> => {
   const response = await fetch(NEWSTORIES_URL);
   if (response.status === 404) throw new Error('Not found');
 
-  const data = await response.json();
-
+  const data: Array<number> = await response.json();
   return data;
 };
