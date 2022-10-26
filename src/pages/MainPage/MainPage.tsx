@@ -3,6 +3,7 @@ import styles from './MainPage.module.css';
 import { Typography } from 'antd';
 import { fetchNewStories } from 'API';
 import Story from 'components/Story';
+import { MAX_STORIES } from '../../constants';
 
 const MainPage = () => {
   const [storyIds, setStoryIds] = useState<Array<number>>([]);
@@ -10,8 +11,7 @@ const MainPage = () => {
   useEffect(() => {
     fetchNewStories()
       .then((data) => {
-        const stories = data.filter((_, i) => i < 100);
-        // console.log(stories);
+        const stories = data.filter((_, i) => i < MAX_STORIES);
         setStoryIds(stories);
       })
       .catch((err: Error) => {
