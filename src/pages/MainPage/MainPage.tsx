@@ -1,7 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import React, { useEffect } from 'react';
-import { Spin, Typography } from 'antd';
+import { Button, Spin, Typography } from 'antd';
 
 import styles from './MainPage.module.css';
 
@@ -18,12 +16,15 @@ const MainPage = () => {
     }, REFETCH_TIME_GAP);
 
     return () => clearInterval(id);
-  }, []);
+  }, [refetch]);
 
   return (
     <main className={`main ${styles.main}`}>
       <div className={`container ${styles.container}`}>
         <Typography.Title level={2}>Latest stories:</Typography.Title>
+        <Button type="primary" loading={isLoading} onClick={() => refetch()}>
+          Refresh
+        </Button>
         {isLoading && <Spin size="large" />}
         {isError && <Typography.Title level={3}>Something went wrong...</Typography.Title>}
         <ul>{storyIds && storyIds.map((storyId) => <Story key={storyId} storyId={storyId} />)}</ul>
