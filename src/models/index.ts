@@ -10,6 +10,16 @@ export interface IStory {
   url: string;
 }
 
+export interface IComment {
+  by: string;
+  id: number;
+  kids: Array<number>;
+  parent: number;
+  text: string;
+  time: number;
+  type: string;
+}
+
 export interface ItemResponse {
   id: number;
   deleted?: boolean;
@@ -18,7 +28,7 @@ export interface ItemResponse {
   time?: number;
   text?: string;
   dead?: boolean;
-  parent?: boolean;
+  parent?: number;
   poll?: number;
   kids?: Array<number>;
   url?: string;

@@ -41,6 +41,11 @@ const StoryPage = () => {
             </Typography.Title>
             <Typography.Title level={3}>Author: {story.by}</Typography.Title>
             <Typography.Title level={3}>Comments: {story.descendants}</Typography.Title>
+            <ul>
+              {story.kids.map((commentId) => (
+                <Comment key={commentId} commentId={commentId} />
+              ))}
+            </ul>
           </>
         )}
         {/* {error && <Typography.Title level={4}>Score: {error.message}</Typography.Title>} */}

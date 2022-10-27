@@ -1,4 +1,4 @@
-import { IStory, ItemResponse } from 'models';
+import { IComment, IStory, ItemResponse } from 'models';
 import { ITEM_URL, NEWSTORIES_URL } from '../constants';
 
 export const fetchStoryById = async (id: number): Promise<IStory> => {
@@ -10,6 +10,17 @@ export const fetchStoryById = async (id: number): Promise<IStory> => {
   if (data.type !== 'story') throw new Error('Not a story');
 
   return data as IStory;
+};
+
+export const fetchCommentById = async (id: number): Promise<IComment> => {
+  const response = await fetch(`${ITEM_URL}/${id}.json`);
+  if (response.status === 404) throw new Error('Not found');
+
+  const data: ItemResponse = await response.json();
+  if (data === null) throw new Error('No matches');
+  if (data.type !== 'comment') throw new Error('Not a comment');
+
+  return data as IComment;
 };
 
 export const fetchNewStories = async (): Promise<Array<number>> => {
