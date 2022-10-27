@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from './StoryPage.module.css';
 import { useParams } from 'react-router-dom';
-import { Skeleton, Typography } from 'antd';
+import { Divider, Skeleton, Typography } from 'antd';
 import { IStory } from 'models';
 import { fetchStoryById } from 'API';
 import { getDateFromUnixTimestamp } from 'utils';
+import Comment from 'components/Comment';
 
 interface IParams {
   id: string;
@@ -12,6 +13,7 @@ interface IParams {
 
 const StoryPage = () => {
   const [story, setStory] = useState<IStory | null>(null);
+  // const [comments, setComments] = useState<IComment[]>([]);
   const { id: storyId } = useParams<IParams>();
 
   useEffect(() => {
@@ -41,10 +43,10 @@ const StoryPage = () => {
             </Typography.Title>
             <Typography.Title level={3}>Author: {story.by}</Typography.Title>
             <Typography.Title level={3}>Comments: {story.descendants}</Typography.Title>
+            <Divider />
             <ul>
-              {story.kids.map((commentId) => (
-                <Comment key={commentId} commentId={commentId} />
-              ))}
+              {story.kids &&
+                story.kids.map((commentId) => <Comment key={commentId} commentId={commentId} />)}
             </ul>
           </>
         )}
