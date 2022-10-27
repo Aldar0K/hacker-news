@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import styles from './Comment.module.css';
-import { Button, Skeleton, Typography } from 'antd';
+import { Button, Divider, Skeleton, Typography } from 'antd';
 import { fetchCommentById } from 'API';
 import { IComment } from 'models';
 
@@ -28,13 +28,15 @@ const Comment: FC<CommentProps> = ({ commentId }) => {
       {comment && (
         <>
           <Typography.Title level={4}>{comment.by}</Typography.Title>
-          <Typography.Title level={5}>{comment.text}</Typography.Title>
+          <Typography.Text className={styles.text}>{comment.text}</Typography.Text>
+
           {comment.kids && (
             <>
               <Typography.Title level={5}>{comment.kids.length} answer(s)</Typography.Title>
-              <Button onClick={() => setShowMore(!showMore)}>{showMore ? 'Hide' : 'More'}</Button>
+              <Button onClick={() => setShowMore(!showMore)}>{showMore ? 'Hide' : 'Show'}</Button>
             </>
           )}
+
           {comment.kids && showMore && (
             <ul>
               {comment.kids.map((commentId) => (
@@ -42,6 +44,8 @@ const Comment: FC<CommentProps> = ({ commentId }) => {
               ))}
             </ul>
           )}
+
+          <Divider />
         </>
       )}
       {error && <Typography.Title level={4}>Score: {error.message}</Typography.Title>}

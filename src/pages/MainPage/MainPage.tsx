@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Button, Spin, Typography } from 'antd';
+import { ReloadOutlined } from '@ant-design/icons';
 
 import styles from './MainPage.module.css';
 
@@ -23,7 +24,7 @@ const MainPage = () => {
       <div className={`container ${styles.container}`}>
         <Typography.Title level={2}>Latest stories:</Typography.Title>
         <Button type="primary" loading={isLoading} onClick={() => refetch()}>
-          Refresh
+          Refresh <ReloadOutlined />
         </Button>
         {isLoading && <Spin size="large" />}
         {isError && <Typography.Title level={3}>Fetching problems...</Typography.Title>}
