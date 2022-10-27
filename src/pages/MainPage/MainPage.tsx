@@ -26,8 +26,14 @@ const MainPage = () => {
           Refresh
         </Button>
         {isLoading && <Spin size="large" />}
-        {isError && <Typography.Title level={3}>Something went wrong...</Typography.Title>}
-        <ul>{storyIds && storyIds.map((storyId) => <Story key={storyId} storyId={storyId} />)}</ul>
+        {isError && <Typography.Title level={3}>Fetching problems...</Typography.Title>}
+        {storyIds && (
+          <ul>
+            {storyIds.map((storyId) => (
+              <Story key={storyId} storyId={storyId} />
+            ))}
+          </ul>
+        )}
       </div>
     </main>
   );
