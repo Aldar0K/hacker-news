@@ -27,3 +27,5 @@ export interface ItemResponse {
   parts?: Array<number>;
   descendants?: number;
 }
+
+export type StoriesResponse = Array<number>;
