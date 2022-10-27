@@ -13,7 +13,7 @@ interface IParams {
 
 const StoryPage = () => {
   const [story, setStory] = useState<IStory | null>(null);
-  // const [comments, setComments] = useState<IComment[]>([]);
+  const [error, setError] = useState<Error | null>(null);
   const { id: storyId } = useParams<IParams>();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const StoryPage = () => {
       })
       .catch((err: Error) => {
         console.log(err.message);
-        // setError(err);
+        setError(err);
       });
   }, [storyId]);
 
@@ -43,16 +43,19 @@ const StoryPage = () => {
             </Typography.Title>
             <Typography.Title level={3}>Author: {story.by}</Typography.Title>
             <Typography.Title level={3}>Comments: {story.descendants}</Typography.Title>
+
             <Divider />
+
             <ul>
               {story.kids &&
                 story.kids.map((commentId) => <Comment key={commentId} commentId={commentId} />)}
             </ul>
           </>
         )}
-        {/* {error && <Typography.Title level={4}>Score: {error.message}</Typography.Title>} */}
-        {/* {!story && !error && <Skeleton />} */}
-        {!story && <Skeleton />}
+        {error && (
+          <Typography.Title level={4}>Something went wrong ({error.message})</Typography.Title>
+        )}
+        {!story && !error && <Skeleton />}
       </div>
     </main>
   );
