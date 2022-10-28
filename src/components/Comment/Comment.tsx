@@ -1,8 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
-import styles from './Comment.module.css';
 import { Button, Divider, Skeleton, Typography } from 'antd';
-import { fetchCommentById } from 'API';
+
+import styles from './Comment.module.css';
 import { IComment } from 'models';
+import { fetchCommentById } from 'API';
 
 interface CommentProps {
   commentId: number;

@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './NotFoundPage.module.css';
 import { Typography } from 'antd';
+
+import styles from './NotFoundPage.module.css';
 
 const NotFoundPage = () => {
   return (

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import styles from './StoryPage.module.css';
 import { Link, useParams } from 'react-router-dom';
 import { Button, Divider, Skeleton, Typography, Breadcrumb } from 'antd';
 import { LinkOutlined, ReloadOutlined } from '@ant-design/icons';
+
+import styles from './StoryPage.module.css';
 import { IStory } from 'models';
 import { fetchStoryById } from 'API';
 import { getDateFromUnixTimestamp } from 'utils';

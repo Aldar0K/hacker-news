@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
-import styles from './Header.module.css';
 import { Typography } from 'antd';
 import { Link } from 'react-router-dom';
+
+import styles from './Header.module.css';
 
 const Header: FC = () => {
   return (

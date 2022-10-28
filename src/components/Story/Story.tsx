@@ -1,10 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
-import styles from './Story.module.css';
 import { Skeleton, Typography } from 'antd';
+import { Link } from 'react-router-dom';
+
+import styles from './Story.module.css';
 import { fetchStoryById } from 'API';
 import { IStory } from 'models';
 import { getDateFromUnixTimestamp } from 'utils';
-import { Link } from 'react-router-dom';
 
 interface StoryProps {
   storyId: number;
