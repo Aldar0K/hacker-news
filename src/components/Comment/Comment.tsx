@@ -27,14 +27,16 @@ const Comment: FC<CommentProps> = ({ commentId }) => {
     <li className={styles.container}>
       {comment && (
         <>
-          <Typography.Title level={4}>{comment.by}</Typography.Title>
+          <Typography.Title level={4} className={styles.title}>
+            {comment.by}
+          </Typography.Title>
           <Typography.Text className={styles.text}>{comment.text}</Typography.Text>
 
           {comment.kids && (
-            <>
+            <div className={styles.answers}>
               <Typography.Title level={5}>{comment.kids.length} answer(s)</Typography.Title>
               <Button onClick={() => setShowMore(!showMore)}>{showMore ? 'Hide' : 'Show'}</Button>
-            </>
+            </div>
           )}
 
           {comment.kids && showMore && (

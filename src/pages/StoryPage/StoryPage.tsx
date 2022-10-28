@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './StoryPage.module.css';
-import { useParams } from 'react-router-dom';
-import { Button, Divider, Skeleton, Typography } from 'antd';
+import { Link, useParams } from 'react-router-dom';
+import { Button, Divider, Skeleton, Typography, Breadcrumb } from 'antd';
 import { LinkOutlined, ReloadOutlined } from '@ant-design/icons';
 import { IStory } from 'models';
 import { fetchStoryById } from 'API';
@@ -47,6 +47,18 @@ const StoryPage = () => {
       <div className={`container ${styles.container}`}>
         {story && (
           <>
+            <Breadcrumb className={styles.breadcrumb}>
+              <Breadcrumb.Item>
+                <Link to="/">Home</Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/">stories</Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to={`/stories/${storyId}`}>{storyId}</Link>
+              </Breadcrumb.Item>
+            </Breadcrumb>
+
             <div className={styles.heading}>
               <Typography.Title level={2}>{story.title}</Typography.Title>
               <a href={story.url} target="_blank" rel="noreferrer" className={styles.link}>
