@@ -17,6 +17,10 @@
   gap: 10px;
 }
 
+.title {
+  text-align: center;
+}
+
 .breadcrumb {
   display: flex;
   margin-bottom: 5px;

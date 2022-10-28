@@ -1,3 +1,41 @@
 .container {
-  background-color: #bad5ee;;
+  display: flex;
+
+  flex-direction: column;
+
+  background-color: #c1daf2;;
+  list-style: none;
+}
+
+.heading {
+  display: flex;
+
+  justify-content: center;
+}
+
+.link {
+  padding: 10px 20px 0;
+
+  transition: all .3s ease;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.title {
+  text-align: center;
+}
+
+.info {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 30px;
+}
+
+.info__item {
+  font-size: 16px;
 }

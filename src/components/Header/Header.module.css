@@ -3,10 +3,20 @@
 }
 
 .container {
+  display: flex;
+
   padding: 17px 50px;
+
+  justify-content: flex-start;
 }
 
 .container .title {
   color: white;
   margin-bottom: 0;
+}
+
+@media (max-width: 360px) {
+  .title {
+    font-size: 34px!important;
+  }
 }

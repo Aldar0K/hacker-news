@@ -22,16 +22,20 @@ const MainPage = () => {
   return (
     <main className={`main ${styles.main}`}>
       <div className={`container ${styles.container}`}>
-        <Typography.Title level={2}>Latest stories:</Typography.Title>
-        <Button type="primary" loading={isLoading} onClick={() => refetch()}>
-          Refresh <ReloadOutlined />
-        </Button>
+        <div className={styles.heading}>
+          <Typography.Title level={2}>Latest stories</Typography.Title>
+          <Button type="primary" size="large" loading={isLoading} onClick={() => refetch()}>
+            Refresh <ReloadOutlined />
+          </Button>
+        </div>
+
         {isLoading && <Spin size="large" />}
         {isError && <Typography.Title level={3}>Fetching problems...</Typography.Title>}
+
         {storyIds && (
-          <ul>
-            {storyIds.map((storyId) => (
-              <Story key={storyId} storyId={storyId} />
+          <ul className={styles.stories}>
+            {storyIds.map((storyId, i) => (
+              <Story key={storyId} storyId={storyId} index={i} />
             ))}
           </ul>
         )}

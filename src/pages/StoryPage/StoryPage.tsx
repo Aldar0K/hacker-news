@@ -60,7 +60,9 @@ const StoryPage = () => {
             </Breadcrumb>
 
             <div className={styles.heading}>
-              <Typography.Title level={2}>{story.title}</Typography.Title>
+              <Typography.Title level={2} className={styles.title}>
+                {story.title}
+              </Typography.Title>
               <a href={story.url} target="_blank" rel="noreferrer" className={styles.link}>
                 <LinkOutlined />
               </a>

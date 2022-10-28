@@ -5,3 +5,22 @@
 .container {
   padding: 10px 20px;
 }
+
+.heading {
+  display: flex;
+
+  margin-bottom: 10px;
+
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stories {
+  display: flex;
+  padding: 0;
+
+  flex-direction: column;
+  gap: 10px;
+}
