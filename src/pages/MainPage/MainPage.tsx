@@ -3,7 +3,6 @@ import { Button, Spin, Typography } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 
 import styles from './MainPage.module.css';
-
 import Story from 'components/Story';
 import { useGetStoriesQuery } from 'store/story/story.api';
 import { REFETCH_TIME_GAP } from '../../constants';
