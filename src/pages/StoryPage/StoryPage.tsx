@@ -92,9 +92,11 @@ const StoryPage = () => {
             </ul>
           </>
         )}
+
         {error && (
           <Typography.Title level={4}>Something went wrong ({error.message})</Typography.Title>
         )}
+
         {!story && !error && <Skeleton />}
       </div>
     </main>

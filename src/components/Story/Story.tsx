@@ -55,6 +55,7 @@ const Story: FC<StoryProps> = ({ storyId, index }) => {
       {error && (
         <Typography.Title level={4}>Something went wrong ({error.message})</Typography.Title>
       )}
+
       {!story && !error && <Skeleton />}
     </li>
   );
