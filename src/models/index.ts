@@ -2,7 +2,7 @@ export interface IStory {
   by: string;
   descendants: number;
   id: number;
-  kids: Array<number>;
+  kids?: Array<number>;
   score: number;
   time: number;
   title: string;

@@ -6,7 +6,7 @@ const fakeResponse: Array<number> = [42];
 beforeEach(() => {
   global.fetch = jest.fn().mockImplementation(() =>
     Promise.resolve({
-      json: () => Promise.resolve(fakeResponse) as Promise<Array<number>>,
+      json: () => Promise.resolve(fakeResponse),
     })
   );
 });
