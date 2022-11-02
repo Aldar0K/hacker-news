@@ -1,10 +1,10 @@
 import { rest } from 'msw';
-import { IStory } from 'models';
+import { IComment, IStory } from 'models';
 
-const fakeJSON: IStory = {
+const fakeStory: IStory = {
   by: 'test author',
   descendants: 42,
-  id: 42,
+  id: 1,
   score: 42,
   time: 42,
   title: 'test title',
@@ -12,8 +12,45 @@ const fakeJSON: IStory = {
   url: 'test url',
 };
 
+const fakeComment: IComment = {
+  by: 'test author',
+  id: 2,
+  parent: 42,
+  text: 'test text',
+  time: 42,
+  type: 'comment',
+};
+
+const fakeCommentWithKids: IComment = {
+  by: 'test author',
+  id: 3,
+  kids: [4],
+  parent: 42,
+  text: 'test text',
+  time: 42,
+  type: 'comment',
+};
+
+const fakeKidComment: IComment = {
+  by: 'test kid author',
+  id: 4,
+  parent: 3,
+  text: 'test kid text',
+  time: 42,
+  type: 'comment',
+};
+
 export const handlers = [
-  rest.get('https://hacker-news.firebaseio.com/v0/item/42.json', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(fakeJSON));
+  rest.get('https://hacker-news.firebaseio.com/v0/item/1.json', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(fakeStory));
+  }),
+  rest.get('https://hacker-news.firebaseio.com/v0/item/2.json', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(fakeComment));
+  }),
+  rest.get('https://hacker-news.firebaseio.com/v0/item/3.json', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(fakeCommentWithKids));
+  }),
+  rest.get('https://hacker-news.firebaseio.com/v0/item/4.json', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(fakeKidComment));
   }),
 ];

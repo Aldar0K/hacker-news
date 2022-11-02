@@ -11,7 +11,7 @@ interface CommentProps {
 
 const Comment: FC<CommentProps> = ({ commentId }) => {
   const [comment, setComment] = useState<IComment | null>(null);
-  const [showMore, setShowMore] = useState<boolean>(false);
+  const [isShow, setIsShow] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
@@ -36,11 +36,11 @@ const Comment: FC<CommentProps> = ({ commentId }) => {
           {comment.kids && (
             <div className={styles.answers}>
               <Typography.Title level={5}>{comment.kids.length} answer(s)</Typography.Title>
-              <Button onClick={() => setShowMore(!showMore)}>{showMore ? 'Hide' : 'Show'}</Button>
+              <Button onClick={() => setIsShow(!isShow)}>{isShow ? 'Hide' : 'Show'}</Button>
             </div>
           )}
 
-          {comment.kids && showMore && (
+          {comment.kids && isShow && (
             <ul>
               {comment.kids.map((commentId) => (
                 <Comment key={commentId} commentId={commentId} />
