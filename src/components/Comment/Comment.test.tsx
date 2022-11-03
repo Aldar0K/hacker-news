@@ -47,6 +47,24 @@ describe("when rendered and the comment's kids field is not empty", () => {
   });
 });
 
+describe('when the data is not received', () => {
+  it('should contain an error', async () => {
+    render(<Comment commentId={5} />);
+
+    const error = await screen.findByText(/not found/i);
+    expect(error).toBeInTheDocument();
+  });
+});
+
+describe('when the received data is null', () => {
+  it('should contain an error', async () => {
+    render(<Comment commentId={6} />);
+
+    const error = await screen.findByText(/no matches/i);
+    expect(error).toBeInTheDocument();
+  });
+});
+
 describe('when show button is clicked', () => {
   it('should render kids comments', async () => {
     render(<Comment commentId={3} />);
