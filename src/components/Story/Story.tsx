@@ -17,13 +17,16 @@ const Story: FC<StoryProps> = ({ storyId, index }) => {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    fetchStoryById(storyId)
-      .then((data) => {
-        setStory(data);
-      })
-      .catch((err: Error) => {
-        setError(err);
-      });
+    const loadStory = () => {
+      fetchStoryById(storyId)
+        .then((data) => {
+          setStory(data);
+        })
+        .catch((err: Error) => {
+          setError(err);
+        });
+    };
+    loadStory();
   }, [storyId]);
 
   return (
@@ -53,10 +56,16 @@ const Story: FC<StoryProps> = ({ storyId, index }) => {
       )}
 
       {error && (
-        <Typography.Title level={4}>Something went wrong ({error.message})</Typography.Title>
+        <div className={styles.error}>
+          <Typography.Title level={4}>Something went wrong ({error.message})</Typography.Title>
+        </div>
       )}
 
-      {!story && !error && <Skeleton />}
+      {!story && !error && (
+        <div className={styles.skeleton} data-testid="skeleton">
+          <Skeleton />
+        </div>
+      )}
     </li>
   );
 };

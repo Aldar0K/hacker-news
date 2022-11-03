@@ -53,4 +53,10 @@ export const handlers = [
   rest.get('https://hacker-news.firebaseio.com/v0/item/4.json', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(fakeKidComment));
   }),
+  rest.get('https://hacker-news.firebaseio.com/v0/item/5.json', (req, res, ctx) => {
+    return res(ctx.status(404));
+  }),
+  rest.get('https://hacker-news.firebaseio.com/v0/item/6.json', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(null));
+  }),
 ];
