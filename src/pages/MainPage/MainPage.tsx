@@ -1,14 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Button, Spin, Typography } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 
 import styles from './MainPage.module.css';
 import Story from 'components/Story';
-import { useGetStoriesQuery } from 'store/story/story.api';
+import { fetchStoryIds, useAppDispatch, useAppSelector } from 'store';
 import { REFETCH_TIME_GAP } from '../../constants';
 
 const MainPage = () => {
-  const { isLoading, isError, data: storyIds, refetch } = useGetStoriesQuery('new');
+  const dispatch = useAppDispatch();
+  const { storyIds, loading, error } = useAppSelector((state) => state.storyIds);
+
+  const refetch = useCallback(() => {
+    dispatch(fetchStoryIds('new'));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!storyIds.length) refetch();
+  }, [dispatch, refetch, storyIds.length]);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -16,21 +25,21 @@ const MainPage = () => {
     }, REFETCH_TIME_GAP);
 
     return () => clearInterval(id);
-  }, [refetch]);
+  }, [dispatch, refetch]);
 
   return (
     <main className={`main ${styles.main}`}>
       <div className={`container ${styles.container}`}>
         <div className={styles.heading}>
           <Typography.Title level={2}>Latest stories</Typography.Title>
-          <Button type="primary" size="large" loading={isLoading} onClick={() => refetch()}>
+          <Button type="primary" size="large" loading={loading} onClick={() => refetch()}>
             Refresh <ReloadOutlined />
           </Button>
         </div>
 
-        {isLoading && <Spin size="large" />}
+        {loading && <Spin size="large" />}
 
-        {isError && <Typography.Title level={3}>Fetching problems...</Typography.Title>}
+        {error && <Typography.Title level={3}>Fetching problems...</Typography.Title>}
 
         {storyIds && (
           <ul className={styles.stories}>

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { storyApi } from './story/story.api';
+import storyIdsReducer from './slices/storyIdsSlice';
 
 export const store = configureStore({
   reducer: {
-    [storyApi.reducerPath]: storyApi.reducer,
+    storyIds: storyIdsReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(storyApi.middleware),
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
