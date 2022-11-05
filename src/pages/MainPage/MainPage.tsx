@@ -29,6 +29,7 @@ const MainPage = () => {
         </div>
 
         {isLoading && <Spin size="large" />}
+
         {isError && <Typography.Title level={3}>Fetching problems...</Typography.Title>}
 
         {storyIds && (

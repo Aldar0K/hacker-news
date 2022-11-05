@@ -40,6 +40,8 @@ const fakeKidComment: IComment = {
   type: 'comment',
 };
 
+const fakeNewStories: Array<number> = [1];
+
 export const handlers = [
   rest.get('https://hacker-news.firebaseio.com/v0/item/1.json', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(fakeStory));
@@ -58,5 +60,8 @@ export const handlers = [
   }),
   rest.get('https://hacker-news.firebaseio.com/v0/item/6.json', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(null));
+  }),
+  rest.get('https://hacker-news.firebaseio.com/v0/newstories.json', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(fakeNewStories));
   }),
 ];
