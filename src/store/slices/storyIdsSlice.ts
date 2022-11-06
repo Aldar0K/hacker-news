@@ -25,6 +25,9 @@ export const fetchStoryIds = createAsyncThunk<
 >('storyIds/fetchStoryIds', async (type, { rejectWithValue }) => {
   const response = await fetch(`${BASE_URL}/${type}stories.json`);
 
+  if (response.status === 401) {
+    return rejectWithValue('Permission denied');
+  }
   if (response.status === 404) {
     return rejectWithValue('Not found');
   }

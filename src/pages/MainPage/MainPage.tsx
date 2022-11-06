@@ -39,7 +39,11 @@ const MainPage = () => {
 
         {loading && <Spin size="large" />}
 
-        {error && <Typography.Title level={3}>Fetching problems...</Typography.Title>}
+        {error && (
+          <Typography.Title level={3} style={{ color: 'red' }}>
+            Fetching problems ({error})
+          </Typography.Title>
+        )}
 
         {storyIds && (
           <ul className={styles.stories}>
