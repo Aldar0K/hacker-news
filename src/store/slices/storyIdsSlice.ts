@@ -18,7 +18,7 @@ const initialState: IStoriesState = {
 
 export const fetchStoryIds = createAsyncThunk<
   StoriesResponse,
-  string,
+  'new' | 'top' | 'best',
   {
     rejectValue: string;
   }
