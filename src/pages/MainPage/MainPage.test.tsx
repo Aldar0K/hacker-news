@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { rest } from 'msw';
 import { Provider } from 'react-redux';
 
 import MainPage from './MainPage';
@@ -62,26 +61,3 @@ describe('when the data is received', () => {
     expect(storyScore).toBeInTheDocument();
   });
 });
-
-// describe('when the data is not received', () => {
-//   it('should contain an error', async () => {
-//     server.use(
-//       rest.get('https://hacker-news.firebaseio.com/v0/newstories.json', (req, res, ctx) => {
-//         return res(ctx.status(401), ctx.json({ error: 'Permission denied' }));
-//       })
-//     );
-
-//     render(
-//       <Provider store={store}>
-//         <MemoryRouter>
-//           <MainPage />
-//         </MemoryRouter>
-//       </Provider>
-//     );
-
-//     const error = await screen.findByText(/fetching problems.../i);
-//     expect(error).toBeInTheDocument();
-
-//     screen.debug();
-//   });
-// });
